@@ -8,5 +8,10 @@
       <class name="com.acc.tests.MyListenerTest"/>
     </classes>
   </test> <!-- Test -->
+  <test name="Test02">
+    <classes>
+      <class name="com.acc.tests.LoginTest"/>
+    </classes>
+  </test> <!-- Test -->
    
 </suite> <!-- Suite -->
