@@ -4,19 +4,25 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
 public class MyListener implements ITestListener {
+	ExtentReports e;
+	ExtentTest t;
 
 	public void onTestStart(ITestResult result) {
-		System.out.println("On test start");
+		t=e.startTest(result.getMethod().getMethodName(), "has started");
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		
-		System.out.println("On test pass");
+		t.log(LogStatus.PASS, result.getMethod().getMethodName()+" has passed");
 	}
 
 	public void onTestFailure(ITestResult result) {
-		System.out.println("On test Fail");
+		t.log(LogStatus.FAIL, result.getMethod().getMethodName()+" has failed");
 	}
 
 	public void onTestSkipped(ITestResult result) {
@@ -28,11 +34,13 @@ public class MyListener implements ITestListener {
 	}
 
 	public void onStart(ITestContext context) {
-		System.out.println("On TestNG start");	
+		e= new ExtentReports("C:\\GitRepository\\POMFramework\\test-output\\myreport.html");
+		
 	}
 
 	public void onFinish(ITestContext context) {		
-		System.out.println("On TestNG finish");
+		e.endTest(t);
+		e.flush();
 	}
 
 }
