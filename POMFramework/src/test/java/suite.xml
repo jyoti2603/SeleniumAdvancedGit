@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+<listeners>
+<listener class-name="com.acc.utilities.MyListener"/>
+</listeners>
+  <test name="Test01">
+    <classes>
+      <class name="com.acc.tests.MyListenerTest"/>
+    </classes>
+  </test> <!-- Test -->
+   
+</suite> <!-- Suite -->
